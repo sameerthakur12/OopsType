@@ -1,0 +1,39 @@
+:root{
+    --bgColor:#333;
+    --textPrimary:#fff;
+    --textSecondary:#666;
+    --primaryColor:#fd4;
+}
+body{
+    background-color: var(--bgColor);
+    color: var(--textPrimary);
+    font-size: 1.4rem;
+}
+main{
+    width: 600px;
+    height: 50px auto;
+}
+h1{
+    color: var(--primaryColor);
+}
+h1 img{
+    width: 40px;
+    fill:var(--primaryColor)
+}
+#header{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+#buttons{
+    text-align: right;
+}
+#info{
+    color: var(--primaryColor);
+}
+button{
+    background: rgba(255,255,255,.2);
+    border: 0;
+    color: rgba(255,255,255,.5);
+    padding: 5px 20px;
+    cursor: pointer;
+}
