@@ -1,114 +1,207 @@
-:root{
-    --bgColor:#333;
-    --textPrimary:#fff;
-    --textSecondary:#666;
-    --primaryColor:#fd4;
-}
-body{
-    background-color: var(--bgColor);
-    color: var(--textPrimary);
-    font-size: 1.4rem;
-}
-main{
-    width: 600px;
-    height: 50px auto;
-}
-h1{
-    color: var(--primaryColor);
-}
-h1 img{
-    width: 40px;
-    fill:var(--primaryColor)
-}
-#header{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: 20px 6px 30px;
-}
-#buttons{
-    text-align: right;
-    border-radius: 5px;
-}
-#info{
-    color: var(--primaryColor);
+body,
+main {
+  display: flex;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-button{
-    background: rgba(255,255,255,.2);
-    border: 0;
-    color: rgba(255,255,255,.5);
-    padding: 5px 20px;
-    cursor: pointer;
+:root {
+  --bgColor: #333;
+  --textPrimary: #fff;
+  --textSecondary: #666;
+  --primaryColor: #fd4;
 }
-div#game{
-    line-height: 35px;
-    height: 100px;
-    overflow: hidden;
-    position: relative;
-}
-div#game:focus{
-    outline: 0;
-}
-#focus-error{
-    position: absolute;
-    inset: 0;
-    text-align: center;
-    padding-top: 35px;
-}
-#game:focus #focus-error{
-    display: none;
-
-}
-#words{
-    filter: blur(5px);
-    color: var(--textSecondary);
-}
-#game:focus #words{
-    filter: blur(0px);
-}
-div.word{
-    display: inline-block;
-    margin: 0 5px;
-}
-.letter.correct{
-    color: #fff;
-}
-.letter.incorrect{
-    color: #ff0000;
-}
-@keyframes blink{
-    0%{
-        opacity: 1;   
-    }
-    50%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
-}
-#cursor{
-    display: none;
-    width: 2px;
-    height: 1.6rem;
-    background-color: var(--primaryColor);
-    position: fixed;
-    top: 175px;
-    left: 10px;
-    animation: blink .9s infinite;
-}
-#game:focus #cursor{
-    display: block;
-}
-#game.over #words{
-    opacity: .5;
-    filter: blur(0px);
+.passage-section {
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0 8px;
+  box-sizing: border-box;
 }
 
-#game.over:focus #cursor{
-    display: none;
+#words {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  text-align: left;
 }
 
-#game.over #focus-error{
-    display: none;
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: var(--bgColor);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  color: var(--textPrimary);
+  font-size: 1.4rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+main {
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: 90x;
+  margin: 40px auto 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+}
+h1 {
+  color: var(--primaryColor);
+}
+h1 img {
+  width: 40px;
+  fill: var(--primaryColor);
+}
+#header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 20px 6px 30px;
+}
+#game {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-height: 300px;
+  overflow: hidden;
+}
+#buttons {
+  text-align: right;
+  border-radius: 5px;
+}
+#info {
+  color: var(--primaryColor);
+}
+
+button {
+  background: rgba(255, 255, 255, 0.2);
+  border: 0;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 5px 20px;
+  cursor: pointer;
+}
+div#game {
+  line-height: 35px;
+  height: 100px;
+  overflow: hidden;
+  position: relative;
+}
+.passage-section {
+  box-shadow: 0 8px 44px 0 rgba(46, 65, 100, 0.14),
+    0 1.5px 6px rgba(40, 40, 40, 0.1);
+  width: 100vw;
+  border-radius: 22px;
+  padding: 20px 40px;
+  flex: 1 0 720px;
+  max-width: 100vw;
+  min-width: 320px;
+  box-sizing: border-box;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: relative;
+}
+
+div#game:focus {
+  outline: 0;
+}
+#focus-error {
+  position: absolute;
+  inset: 0;
+  text-align: center;
+  padding-top: 35px;
+}
+#game:focus #focus-error {
+  display: none;
+}
+.word {
+  white-space: nowrap;
+  display: inline-flex;
+  user-select: none;
+  font-size: 18px;
+  line-height: 1.5;
+}
+#words {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8x;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  font-size: 1.3rem;
+  min-height: 100px;
+  filter: blur(5px);
+  color: var(--textSecondary);
+  max-width: 100%;
+  line-height: 2.05;
+  overflow-y: auto;
+  word-break: break-word;
+  max-height: 250px;
+}
+#game:focus #words {
+  filter: blur(0px);
+}
+div.word {
+  display: inline-block;
+  margin: 0 5px;
+}
+.letter.correct {
+  color: #fff;
+}
+.letter.incorrect {
+  color: #ff0000;
+}
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.passage-container {
+  width: 100%;
+}
+
+#cursor {
+  display: none;
+  width: 2px;
+  height: 1.6rem;
+  background-color: var(--primaryColor);
+  position: fixed;
+  top: 175px;
+  left: 10px;
+  animation: blink 0.9s infinite;
+}
+#game:focus #cursor {
+  display: block;
+}
+#game.over #words {
+  opacity: 0.5;
+  filter: blur(0px);
+}
+
+#game.over:focus #cursor {
+  display: none;
+}
+
+#game.over #focus-error {
+  display: none;
 }

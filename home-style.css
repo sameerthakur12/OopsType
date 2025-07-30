@@ -1,0 +1,207 @@
+:root {
+    --bg-gradient: linear-gradient(120deg, #141e30 0%, #2b5876 100%);
+    --primary-color: #ffd600;
+    --accent-color: #10b981;
+    --accent2-color: #ff4e50;
+    --text-primary: #fff;
+    --text-secondary: #d6eaff;
+    --glass-bg: rgba(255,255,255,0.07);
+    --box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+body {
+    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    background: var(--bg-gradient) no-repeat center center fixed;
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    overflow-x: hidden;
+    transition: background 0.5s;
+    position: relative;
+}
+
+.background-glow {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 950px;
+    height: 850px;
+    pointer-events: none;
+    border-radius: 50%;
+    background: radial-gradient(rgba(60,190,255,0.14), transparent 70%);
+    transform: translate(-50%,-50%);
+    z-index: 0;
+}
+
+header {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeInDown 1.3s cubic-bezier(.32,1.52,.62,1);
+}
+
+.logo {
+    width: 90px;
+    border-radius: 22px;
+    margin-bottom: 18px;
+    background: #ffe98a;
+    box-shadow: 0 4px 16px rgba(60,60,60,0.12);
+    transition: transform .4s;
+}
+.logo.floating {
+    animation: floating 2.8s infinite ease-in-out;
+}
+@keyframes floating {
+    0%, 100% { transform: translateY(0px);}
+    50% { transform: translateY(-12px);}
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin: 0;
+    letter-spacing: 2px;
+    text-shadow: 0 3px 16px rgba(255,214,0,0.07);
+}
+
+.tagline {
+    color: var(--text-secondary);
+    font-size: 1.25rem;
+    margin-top: 8px;
+    margin-bottom: 0;
+}
+
+.challenge-selection {
+    text-align: center;
+    margin: 30px 0 20px 0;
+    padding: 48px 24px 36px 24px;
+    border-radius: 25px;
+    background: var(--glass-bg);
+    box-shadow: var(--box-shadow);
+    max-width: 420px;
+    width: 92vw;
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(8px);
+    border: 2px solid rgba(255,255,255,0.08);
+    animation: fadeInUp 1.1s cubic-bezier(.22,1.32,.42,1.01) .25s;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(25px);}
+    100% { opacity: 1; transform: none;}
+}
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-25px);}
+    to   { opacity: 1; transform: none;}
+}
+
+.challenge-selection h2 {
+    margin-bottom: 30px;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+}
+
+.levels {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    align-items: center;
+    gap: 18px;
+    width: 100%;
+    flex-wrap: nowrap;
+    margin: auto;
+}
+
+
+.level-btn {
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex: 1 1 0px;            
+    min-width: 90px;          
+    max-width: 120px;         
+    padding: 15px 0;           
+    background: var(--glass-bg);
+    border-radius: 12px;
+    border: 2.6px solid transparent;
+    color: var(--text-primary);
+    font-size: 1.12rem;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 600;
+    box-sizing: border-box;
+    transition: background 0.23s, color 0.23s, box-shadow 0.24s;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.level-btn.easy {
+    border-color: var(--accent-color);
+}
+.level-btn.medium {
+    border-color: #FF9800;
+}
+.level-btn.pro {
+    border-color: var(--accent2-color);
+}
+.level-btn:hover, .level-btn:focus {
+    background: rgba(255,255,255,0.18);
+    color: var(--primary-color);
+    box-shadow: 0 6px 26px rgba(253,214,0,0.14), 0 1.5px 6px rgba(40,40,40,0.12);
+    border-width: 3px;
+}
+
+footer {
+    z-index: 1;
+    margin-top: auto;
+    color: var(--text-secondary);
+    padding: 26px 0 9px 0;
+    font-size: 0.96rem;
+    letter-spacing: 0.2px;
+    text-align: center;
+}
+
+body.fade-out {
+    animation: fadeOut .45s;
+}
+@keyframes fadeOut {
+    to { opacity: 0; }
+}
+
+@media (max-width: 480px) {
+    .levels {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .level-btn {
+        max-width: 100%;
+        margin-bottom: 12px;
+    }
+}

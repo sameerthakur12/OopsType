@@ -1,29 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OopsType</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OopsType - Typing Meter Test</title>
+    <link rel="stylesheet" href="home-style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-    <main>
-        <h1>
-            <img src="./assets/images/OIP (1).jpg" alt="mascot">
-            OopsType
-        </h1>
-        <div id="header">
-            <div id="info"></div>
-            <div id="buttons">
-                <button id="newGameBtn">New game</button>
-            </div>
+    <div class="background-glow"></div>
+    <header>
+        <img src="./assets/images/OIP (1).jpg" alt="OopsType Mascot" class="logo floating" />
+        <h1>OopsType</h1>
+        <p class="tagline">Test your typing speed &amp; accuracy!</p>
+    </header>
+
+    <section class="challenge-selection glass-effect">
+        <h2>Choose a Challenge Level</h2>
+        <div class="levels">
+            <button onclick="selectDifficulty('easy')" class="level-btn easy">
+                <span>🌱</span> Easy
+            </button>
+            <button onclick="selectDifficulty('medium')" class="level-btn medium">
+                <span>⚡</span> Medium
+            </button>
+            <button onclick="selectDifficulty('pro')" class="level-btn pro">
+                <span>🔥</span> Pro
+            </button>
         </div>
-        <div id="game" tabindex="0">
-            <div id="words"></div>
-            <div id="cursor"></div>
-            <div id="focus-error">Click here to focus</div>
-        </div>
-    </main>
-    <script src="script.js"></script>
+    </section>
+
+    <footer>
+        <p>© 2025 OopsType | Made with 💻 and ☕</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.level-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const level = button.textContent.toLowerCase().replace(/[^a-z]/g, '');
+                document.body.classList.add('fade-out');
+                setTimeout(() => {
+                    window.location.href = `game.html?level=${level}`;
+                }, 400);
+            });
+        });
+    </script>
 </body>
 </html>
